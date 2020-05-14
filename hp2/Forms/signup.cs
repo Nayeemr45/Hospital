@@ -8,16 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using hp2.Etest;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace hp2
 {
     public partial class signup : UserControl
     {
+        DBAccess dbobj = new DBAccess();
         public signup()
         {
             InitializeComponent();
         }
-        test1 t = new test1();
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -47,26 +49,62 @@ namespace hp2
 
         private void btn_signup_Click(object sender, EventArgs e)
         {
-            t.USERID = txt_box_userid.Text;
-            t.USERNAME = txt_box_name.Text;
-
-            bool success = t.Insert(t);
-            if(success==true)
+            string user_id = txt_box_userid.Text;
+            string name = txt_box_name.Text;
+            string password = txt_box_password.Text;
+            string phone = txt_box_phone.Text;
+            string address = txt_box_address.Text;
+            if (user_id == "" || name == "" || password == "" || phone == "" || address == "")
             {
-                MessageBox.Show("Inserted");
+                MessageBox.Show("Please Enter All The Informations");
             }
             else
             {
-                MessageBox.Show("Fail inserted");
+                string result = txt_box_userid.Text.Substring(0, 1);
+                if (result == "p")
+                {
+                    string query = "INSERT INTO USER_INFO(USER_ID,NAME,PASSWORD,PHONE,ADDRESS) VALUES (@user_id,@name,@password,@phone,@address)";
+                    SqlCommand insertCommand = new SqlCommand(query);
+                    insertCommand.Parameters.AddWithValue("@user_id", user_id);
+                    insertCommand.Parameters.AddWithValue("@name", name);
+                    insertCommand.Parameters.AddWithValue("@password", password);
+                    insertCommand.Parameters.AddWithValue("@phone", phone);
+                    insertCommand.Parameters.AddWithValue("@address", address);
+                    int success = dbobj.executeQuery(insertCommand);
+                    if (success == 1)
+                    {
+                        MessageBox.Show("Inserted");
+                        if (!Form1.Instance.PnlContainer.Controls.ContainsKey("patient_panel"))
+                        {
+                            patient_panel pp = new patient_panel();
+                            pp.Dock = DockStyle.Fill;
+                            Form1.Instance.PnlContainer.Controls.Add(pp);
+                        }
+                        Form1.Instance.PnlContainer.Controls["patient_panel"].BringToFront();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Fail inserted");
+                        txt_box_userid.Text = "";
+                        txt_box_name.Text = "";
+                        txt_box_password.Text = "";
+                        txt_box_phone.Text = "";
+                        txt_box_address.Text = "";
+                        Form1.Instance.PnlContainer.Controls["signup"].BringToFront();
 
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter Informations As Directed");
+                    txt_box_userid.Text = "";
+                    txt_box_name.Text = "";
+                    txt_box_password.Text = "";
+                    txt_box_phone.Text = "";
+                    txt_box_address.Text = "";
+                    Form1.Instance.PnlContainer.Controls["signup"].BringToFront();
+                }
             }
-            if (!Form1.Instance.PnlContainer.Controls.ContainsKey("login"))
-            {
-                login lg = new login();
-                lg.Dock = DockStyle.Fill;
-                Form1.Instance.PnlContainer.Controls.Add(lg);
-            }
-            Form1.Instance.PnlContainer.Controls["login"].BringToFront();
         }
 
         private void btn_cancel_signup_Click(object sender, EventArgs e)
@@ -77,6 +115,16 @@ namespace hp2
             txt_box_phone.Text = "";
             txt_box_address.Text = "";
             Form1.Instance.PnlContainer.Controls["firstpage"].BringToFront();
+        }
+
+        private void signup_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_box_name_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
