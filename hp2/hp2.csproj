@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBAccess.cs" />
     <Compile Include="Forms\admin_add_new_doctor.cs">
       <SubType>UserControl</SubType>
     </Compile>
