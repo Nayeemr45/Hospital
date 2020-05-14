@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace hp2
 {
     public partial class login : UserControl
     {
+        DBAccess dbobj = new DBAccess();
+        DataTable dtUsers = new DataTable();
         public login()
         {
             InitializeComponent();
@@ -50,43 +54,53 @@ namespace hp2
             }
             else
             {
+                string id = txt_box_login_userid.Text;
+                string password = txt_box_login_password.Text;
+                string query = "SELECT * FROM UserInfo WHERE id = '" + id+"' AND password = '"+password+"'";
 
-                string result = txt_box_login_userid.Text.Substring(0, 1);
-                if (result == "a")
+                dbobj.readDatathroughAdapter(query,dtUsers);
+
+                if (dtUsers.Rows.Count == 1)
                 {
-                    MessageBox.Show("LogIn as Admin");
-                    if (!Form1.Instance.PnlContainer.Controls.ContainsKey("admin_panel"))
+                    dbobj.closeConn();
+                    string result = txt_box_login_userid.Text.Substring(0, 1);
+                    if (result == "a")
                     {
-                        admin_panel ap = new admin_panel();
-                        ap.Dock = DockStyle.Fill;
-                        Form1.Instance.PnlContainer.Controls.Add(ap);
+                        if (!Form1.Instance.PnlContainer.Controls.ContainsKey("admin_panel"))
+                        {
+                            admin_panel ap = new admin_panel();
+                            ap.Dock = DockStyle.Fill;
+                            Form1.Instance.PnlContainer.Controls.Add(ap);
+                        }
+                        Form1.Instance.PnlContainer.Controls["admin_panel"].BringToFront();
+
                     }
-                    Form1.Instance.PnlContainer.Controls["admin_panel"].BringToFront();
+
+                    else if (result == "p")
+                    {
+                        if (!Form1.Instance.PnlContainer.Controls.ContainsKey("patient_panel"))
+                        {
+                            patient_panel pp = new patient_panel();
+                            pp.Dock = DockStyle.Fill;
+                            Form1.Instance.PnlContainer.Controls.Add(pp);
+                        }
+                        Form1.Instance.PnlContainer.Controls["patient_panel"].BringToFront();
+                    }
+
+                    else if (result == "d")
+                    {
+                        if (!Form1.Instance.PnlContainer.Controls.ContainsKey("doctor_panel"))
+                        {
+                            doctor_panel dp = new doctor_panel();
+                            dp.Dock = DockStyle.Fill;
+                            Form1.Instance.PnlContainer.Controls.Add(dp);
+                        }
+                        Form1.Instance.PnlContainer.Controls["doctor_panel"].BringToFront();
+                    }
 
                 }
-
-                else if(result == "p")
-                {
-                    MessageBox.Show("LogIn as Patient");
-                    if (!Form1.Instance.PnlContainer.Controls.ContainsKey("patient_panel"))
-                    {
-                        patient_panel pp = new patient_panel();
-                        pp.Dock = DockStyle.Fill;
-                        Form1.Instance.PnlContainer.Controls.Add(pp);
-                    }
-                    Form1.Instance.PnlContainer.Controls["patient_panel"].BringToFront();
-                }
-
-                else if (result == "d")
-                {
-                    MessageBox.Show("LogIn as Doctor");
-                    if (!Form1.Instance.PnlContainer.Controls.ContainsKey("doctor_panel"))
-                    {
-                        doctor_panel dp = new doctor_panel();
-                        dp.Dock = DockStyle.Fill;
-                        Form1.Instance.PnlContainer.Controls.Add(dp);
-                    }
-                    Form1.Instance.PnlContainer.Controls["doctor_panel"].BringToFront();
+                else {
+                    MessageBox.Show("Please, Enter Valid Information");
                 }
 
             }
