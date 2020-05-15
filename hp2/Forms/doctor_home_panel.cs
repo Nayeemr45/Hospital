@@ -15,6 +15,7 @@ namespace hp2
         public doctor_home_panel()
         {
             InitializeComponent();
+            label1.Text = login.genUserId;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -24,13 +25,19 @@ namespace hp2
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
+            login.genUserId = "";
             if (!Form1.Instance.PnlContainer.Controls.ContainsKey("login"))
             {
-                login lg = new login();
-                lg.Dock = DockStyle.Fill;
-                Form1.Instance.PnlContainer.Controls.Add(lg);
+                login lgn = new login();
+                lgn.Dock = DockStyle.Fill;
+                Form1.Instance.PnlContainer.Controls.Add(lgn);
             }
             Form1.Instance.PnlContainer.Controls["login"].BringToFront();
+        }
+
+        private void doctor_home_panel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
