@@ -43,9 +43,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(250, 268);
+            this.label1.Location = new System.Drawing.Point(188, 218);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 30);
+            this.label1.Size = new System.Drawing.Size(147, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Select Service :";
             // 
@@ -55,9 +56,10 @@
             this.btn_info_1.FlatAppearance.BorderSize = 0;
             this.btn_info_1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_info_1.Image = ((System.Drawing.Image)(resources.GetObject("btn_info_1.Image")));
-            this.btn_info_1.Location = new System.Drawing.Point(797, 271);
+            this.btn_info_1.Location = new System.Drawing.Point(598, 220);
+            this.btn_info_1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_info_1.Name = "btn_info_1";
-            this.btn_info_1.Size = new System.Drawing.Size(33, 30);
+            this.btn_info_1.Size = new System.Drawing.Size(25, 24);
             this.btn_info_1.TabIndex = 1;
             this.btn_info_1.UseVisualStyleBackColor = true;
             // 
@@ -66,9 +68,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 13.8F);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(131, 326);
+            this.label2.Location = new System.Drawing.Point(98, 265);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 30);
+            this.label2.Size = new System.Drawing.Size(241, 22);
             this.label2.TabIndex = 2;
             this.label2.Text = "Select Payment Method :";
             // 
@@ -78,12 +81,14 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 13.8F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(674, 391);
+            this.button1.Location = new System.Drawing.Point(506, 318);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 42);
+            this.button1.Size = new System.Drawing.Size(88, 34);
             this.button1.TabIndex = 5;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_info_2
             // 
@@ -91,9 +96,10 @@
             this.btn_info_2.FlatAppearance.BorderSize = 0;
             this.btn_info_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_info_2.Image = ((System.Drawing.Image)(resources.GetObject("btn_info_2.Image")));
-            this.btn_info_2.Location = new System.Drawing.Point(797, 329);
+            this.btn_info_2.Location = new System.Drawing.Point(598, 267);
+            this.btn_info_2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_info_2.Name = "btn_info_2";
-            this.btn_info_2.Size = new System.Drawing.Size(33, 30);
+            this.btn_info_2.Size = new System.Drawing.Size(25, 24);
             this.btn_info_2.TabIndex = 6;
             this.btn_info_2.UseVisualStyleBackColor = true;
             // 
@@ -107,11 +113,13 @@
             "ECG",
             "Eco",
             "Surgery"});
-            this.checkedListBox1.Location = new System.Drawing.Point(452, 271);
+            this.checkedListBox1.Location = new System.Drawing.Point(339, 220);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(339, 31);
+            this.checkedListBox1.Size = new System.Drawing.Size(255, 26);
             this.checkedListBox1.TabIndex = 7;
             this.checkedListBox1.UseCompatibleTextRendering = true;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // checkedListBox2
             // 
@@ -122,14 +130,15 @@
             "Cash",
             "Card",
             "Mobile Banking"});
-            this.checkedListBox2.Location = new System.Drawing.Point(452, 329);
+            this.checkedListBox2.Location = new System.Drawing.Point(339, 267);
+            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(339, 31);
+            this.checkedListBox2.Size = new System.Drawing.Size(255, 26);
             this.checkedListBox2.TabIndex = 8;
             // 
             // patient_service_panel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(11)))), ((int)(((byte)(23)))));
             this.Controls.Add(this.checkedListBox2);
@@ -139,8 +148,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_info_1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "patient_service_panel";
-            this.Size = new System.Drawing.Size(1010, 763);
+            this.Size = new System.Drawing.Size(758, 620);
             this.ResumeLayout(false);
             this.PerformLayout();
 

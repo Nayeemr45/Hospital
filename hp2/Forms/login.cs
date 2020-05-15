@@ -56,7 +56,7 @@ namespace hp2
             {
                 string id = txt_box_login_userid.Text;
                 string password = txt_box_login_password.Text;
-                string query = "SELECT * FROM UserInfo WHERE id = '" + id+"' AND password = '"+password+"'";
+                string query = "SELECT * FROM USER_INFO WHERE USER_ID = '" + id+"' AND PASSWORD = '"+password+"'";
 
                 dbobj.readDatathroughAdapter(query,dtUsers);
 

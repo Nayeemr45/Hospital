@@ -28,7 +28,7 @@ namespace hp2.Etest
                 conn.Open();
                 adapter.Fill(dt);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -60,7 +60,7 @@ namespace hp2.Etest
                     isSuccess = false;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
