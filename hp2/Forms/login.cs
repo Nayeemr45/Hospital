@@ -15,11 +15,17 @@ namespace hp2
     public partial class login : UserControl
     {
         public static string genUserId;
-        DBAccess dbobj = new DBAccess();
-        DataTable dtUsers = new DataTable();  
+        DBAccess dbobj;
+        DataTable dtUsers; 
         public login()
         {
             InitializeComponent();
+            loadData();
+        }
+
+        public void loadData() {
+            dbobj = new DBAccess();
+            dtUsers = new DataTable();
         }
 
         private void login_Load(object sender, EventArgs e)
@@ -43,9 +49,10 @@ namespace hp2
 
         private void btn_logIn_Click(object sender, EventArgs e)
         {
-            if(txt_box_login_userid.Text=="" || txt_box_login_password.Text=="")
+            loadData();
+            if (txt_box_login_userid.Text=="" || txt_box_login_password.Text=="")
             {
-                MessageBox.Show("Please Enter The Values");
+                MessageBox.Show("Please Enter User Id and Password");
                 txt_box_login_userid.Text = "";
                 txt_box_login_password.Text = "";
                 Form1.Instance.PnlContainer.Controls["login"].BringToFront();
@@ -63,6 +70,8 @@ namespace hp2
                     genUserId = user_id;
                     dbobj.closeConn();
                     string result = txt_box_login_userid.Text.Substring(0, 1);
+                    txt_box_login_userid.Text = "";
+                    txt_box_login_password.Text = "";
                     if (result == "a")
                     {
                         if (!Form1.Instance.PnlContainer.Controls.ContainsKey("admin_panel"))
@@ -99,7 +108,7 @@ namespace hp2
 
                 }
                 else {
-                    MessageBox.Show("Please, Enter Valid Information");
+                    MessageBox.Show("User Id or Password is Incorrect");
                 }
 
             }

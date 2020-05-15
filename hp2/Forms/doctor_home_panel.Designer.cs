@@ -40,18 +40,18 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 55);
+            this.label1.Location = new System.Drawing.Point(562, 55);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 32);
+            this.label1.Size = new System.Drawing.Size(103, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Doctor\'s Name";
+            this.label1.Text = " Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(305, 55);
+            this.label2.Location = new System.Drawing.Point(410, 55);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(146, 32);
             this.label2.TabIndex = 1;
