@@ -14,8 +14,9 @@ namespace hp2
 {
     public partial class login : UserControl
     {
+        public static string genUserId;
         DBAccess dbobj = new DBAccess();
-        DataTable dtUsers = new DataTable();
+        DataTable dtUsers = new DataTable();  
         public login()
         {
             InitializeComponent();
@@ -44,24 +45,22 @@ namespace hp2
         {
             if(txt_box_login_userid.Text=="" || txt_box_login_password.Text=="")
             {
-                MessageBox.Show("Please enter the value");
+                MessageBox.Show("Please Enter The Values");
                 txt_box_login_userid.Text = "";
                 txt_box_login_password.Text = "";
                 Form1.Instance.PnlContainer.Controls["login"].BringToFront();
-
-
-
             }
             else
             {
-                string id = txt_box_login_userid.Text;
+                string user_id = txt_box_login_userid.Text;
                 string password = txt_box_login_password.Text;
-                string query = "SELECT * FROM UserInfo WHERE id = '" + id+"' AND password = '"+password+"'";
+                string query = "SELECT * FROM USER_INFO WHERE USER_ID = '"+ user_id +"' AND PASSWORD = '"+ password +"'";
 
                 dbobj.readDatathroughAdapter(query,dtUsers);
 
                 if (dtUsers.Rows.Count == 1)
                 {
+                    genUserId = user_id;
                     dbobj.closeConn();
                     string result = txt_box_login_userid.Text.Substring(0, 1);
                     if (result == "a")

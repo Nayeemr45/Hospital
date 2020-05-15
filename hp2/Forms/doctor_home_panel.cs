@@ -32,5 +32,10 @@ namespace hp2
             }
             Form1.Instance.PnlContainer.Controls["login"].BringToFront();
         }
+
+        private void doctor_home_panel_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

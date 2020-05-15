@@ -78,6 +78,7 @@
             this.Controls.Add(this.label1);
             this.Name = "doctor_home_panel";
             this.Size = new System.Drawing.Size(758, 650);
+            this.Load += new System.EventHandler(this.doctor_home_panel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
